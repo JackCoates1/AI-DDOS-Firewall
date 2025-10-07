@@ -1,0 +1,6 @@
+scapy
+flask
+tensorflow
+requests
+ipaddress
+schedule

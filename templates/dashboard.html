@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AI DDOS Protection Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #111; color: #eee; }
+    h1 { color: #6cf; }
+    table { border-collapse: collapse; width: 60%; }
+    th, td { border: 1px solid #444; padding: 6px 10px; }
+    th { background: #222; }
+    tbody tr:nth-child(even) { background: #1b1b1b; }
+    code { background: #222; padding: 2px 4px; }
+  </style>
+</head>
+<body>
+  <h1>AI DDOS Protection</h1>
+  <section>
+    <h2>Blocked IPs</h2>
+    <table>
+      <thead><tr><th>IP</th><th>Seconds Remaining</th></tr></thead>
+      <tbody id="blocked-body"></tbody>
+    </table>
+  </section>
+  <script>
+    async function refresh() {
+      try {
+        const r = await fetch('/api/blocked_ips');
+        const data = await r.json();
+        const tbody = document.getElementById('blocked-body');
+        tbody.innerHTML = data.map(row => `<tr><td>${row.ip}</td><td>${Math.round(row.remaining)}</td></tr>`).join('');
+      } catch (e) { console.error(e); }
+    }
+    setInterval(refresh, 5000);
+    refresh();
+  </script>
+</body>
+</html>
