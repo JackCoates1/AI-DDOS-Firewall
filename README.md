@@ -49,6 +49,3 @@ Current ML implementation is a minimal placeholder. Real sequence modeling would
 - Add protocol/port specific mitigation strategies
 - Implement rolling dataset + incremental model training
 - Add Prometheus metrics export
-
-## License
-MIT (add a LICENSE file if desired)
