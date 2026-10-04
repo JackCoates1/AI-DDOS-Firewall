@@ -1,16 +1,16 @@
-# AI-DDOS Protection Firewall
+# AI-DDOS-Firewall prototype
 
-A modular, AI-powered DDoS protection system for Linux servers.
+An educational Python prototype for DDoS detection and firewall responses on Linux. The machine-learning component is a placeholder.
 
-## Features
-- Machine learning based anomaly detection (LSTM placeholder – extend with real time-series windows)
+## Prototype components
+- Placeholder LSTM detection component.
 - Configurable block policies and whitelisting (IP + subnet)
-- Flexible firewall responses (future: rate limiting / protocol / port specific rules)
-- Web dashboard (Flask) for viewing blocked IPs & recent logs
+- Firewall responses, with further rate-limiting and protocol/port rules listed as future work.
+- Flask dashboard prototype.
 - External log integration stub (Splunk HTTP Event Collector)
-- Automated model retraining scaffold
+- Model retraining scaffold.
 
-> NOTE: This project is a reference / educational scaffold. Production DDoS mitigation requires hardening, performance tuning, kernel/network stack optimizations, and thorough security review. Use cautiously.
+> This is an educational scaffold. The model is a placeholder; the project does not establish production DDoS protection.
 
 ## Quick Start
 ```bash
@@ -32,10 +32,10 @@ SPLUNK_TOKEN = "YOUR_TOKEN"
 - ddos_dashboard (web UI)
 
 ## Data & Model
-Current ML implementation is a minimal placeholder. Real sequence modeling would:
+The ML component is a placeholder. Further work on sequence modelling would include:
 1. Aggregate sliding window feature vectors (e.g., packets/sec, unique IPs, entropy metrics)
 2. Shape training data: (batch, timesteps, features)
-3. Persist labeled datasets for supervised refinement.
+3. Save labelled datasets for supervised training.
 
 ## Security Considerations
 - Validate Splunk endpoint + use HTTPS.
@@ -44,7 +44,7 @@ Current ML implementation is a minimal placeholder. Real sequence modeling would
 - Run packet capture with least privileges (e.g., dedicated user + capabilities).
 
 ## Roadmap
-- Replace iptables with nftables + ipset for performance
+- Review alternatives to the current iptables rules before making performance claims.
 - Add rate limiting responses
 - Add protocol/port specific mitigation strategies
 - Implement rolling dataset + incremental model training
